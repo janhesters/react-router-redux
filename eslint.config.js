@@ -40,6 +40,7 @@ export default tseslint.config(
       'unicorn/better-regex': 'warn',
       'unicorn/no-process-exit': 'off',
       'unicorn/no-array-reduce': 'off',
+      '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
       'unicorn/prevent-abbreviations': [
         'error',
         { replacements: { params: false, props: false, utils: false } },

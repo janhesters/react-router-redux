@@ -9,9 +9,10 @@ import {
   Scripts,
   ScrollRestoration,
 } from 'react-router';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import type { Route } from './+types/root';
-import { store } from './redux/store';
+import { persistor, store } from './redux/store';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -35,8 +36,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
+
       <body>
-        <Provider store={store}>{children}</Provider>
+        <Provider store={store}>
+          <PersistGate persistor={persistor}>{children}</PersistGate>
+        </Provider>
         <ScrollRestoration />
         <Scripts />
       </body>
